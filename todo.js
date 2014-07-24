@@ -7,10 +7,12 @@ ToDoList_App.controller("ToDoList_Controller", function($scope){
     {done: false, text:"Third"}
     ];
 
-  $scope.adding = function(value){
-    if (value){
-      $scope.list.splice(0, 0, {done: false, text: value});
-      $scope.Text = null;
+  $scope.adding = function(key, value){
+    if (key.keyCode == 13){
+      if (value){
+        $scope.list.splice(0, 0, {done: false, text: value});
+        $scope.Text = null;
+      }
     }
   };
 

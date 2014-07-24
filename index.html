@@ -14,7 +14,7 @@
   <section class="container">
     <div class="row header">
       <div class="col-xs-12">
-        <h1>TO DO APP</h1>
+        <h1>TO DO APPLICATION</h1>
       </div>
     </div>
     <div class="row list_items" ng-repeat="item in list track by $index" >
@@ -27,15 +27,15 @@
     </div>
     <div class="row">
       <div class="col-xs-8 input_field">
-        <input class="input" type="text" placeholder="I need to..." ng-model="Text">
+        <input class="input" type="text" placeholder="I need to..." ng-model="Text" ng-keydown="adding($event, Text)">
       </div>
-      <div class="col-xs-4 add_button" ng-click="adding(Text)">
+      <div class="col-xs-4 add_button" ng-click="adding({keyCode:13}, Text)">
         <h2 class="add_btn">ADD BUTTON</h2>
       </div>
     </div>
     <div class="row clear_button">
-      <div class="col-xs-12" ng-click="removing()">
-        <h1>CLEAR BUTTON</h1>
+      <div class="col-xs-12" ng-click="removing()" tooltip-placement="bottom" tooltip="Beware this is PERMANENT"  tooltip-popup-delay='300' tooltip-trigger="mouseenter" >
+        <h1>CLEAR COMPLETED</h1>
       </div>
     </div>
   </section>
