@@ -1,31 +1,65 @@
-.col-xs-12{
-  height: 50px;
-  background-color: blue;
+/* ---- Primary Components ---- */
+
+body {
+  background: #13756D;
+}
+
+.header{
+  font-size: 2em;
+  background: #1CA89C;
+  color: #333;
   text-align: center;
 }
-.col-md-6{
-  height: 400px;
-  background-color: orange;
-  text-align: left;
+.list_items{
+  font-size: 2em;
+  padding: 20px;
+  background: #65d8cb; /* Old browsers */
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#65d8cb), to(#72f4e9));
+  background: -webkit-linear-gradient(#65d8cb 0%, #72f4e9 100%);
+  background: -moz-linear-gradient(#65d8cb 0%, #72f4e9 100%);
+  background: -o-linear-gradient(#65d8cb 0%, #72f4e9 100%);
+  background: linear-gradient(#65d8cb 0%, #72f4e9 100%);
 }
-.col-md-3{
-  background-color: green;
-  text-align: left;
+.checkbox{
+
 }
-.col-xs-2{
-  height: 20px;
-  background-color: yellow;
-  text-align: left;
+.items{
+
 }
-.col-xs-10{
-  height: 20px;
-  background-color: purple;
-  text-align: left;
+.input{
+  float: left;
+  border: none;
+  padding: 40px 0;
+  font-size: 2em;
+  text-indent: 55px;
+}
+.add_button{
+  border: none;
+  background: #29F4E3;
+  padding: 0;
+}
+.clear_button{
+  border: none;
+  height: 100px;
+  background: #13756D;
+  font-size: 2em;
+  color: #aaa;
+}
+/* ---- TEXT ---- */
+
+h2{
+   color: #333;
 }
 .done{
-  color: grey;
   text-decoration: line-through;
+  color: #ddd;
 }
+
+/* ---- Prior stuff ---- */
+
 button{
   margin: 15px;
+}
+span{
+  font-size: 10px;
 }

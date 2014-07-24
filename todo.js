@@ -1,4 +1,4 @@
-var ToDoList_App = angular.module("ToDoList", []);
+var ToDoList_App = angular.module("ToDoList", ["ui.bootstrap"]);
 
 ToDoList_App.controller("ToDoList_Controller", function($scope){
   $scope.list = [
@@ -7,16 +7,35 @@ ToDoList_App.controller("ToDoList_Controller", function($scope){
     {done: false, text:"Third"}
     ];
 
-  $scope.push = function(value){
-    $scope.list.splice(0, 0, {done: false, text: value});
+  $scope.adding = function(value){
+    if (value){
+      $scope.list.splice(0, 0, {done: false, text: value});
+      $scope.Text = null;
+    }
   };
-});
 
-$scope.remove = function(){
-  alert("yep");
-  // for (var i = 0; i < $scope.list.length; i++){
-  //   if ($scope.list[i].done == true){
-  //     $scope.list.splice(i,1);
-  //   }    
-  // }
+  $scope.removing = function(){
+    var x = $scope.list.length ;
+    $scope.list2 = []
+    for (var i = 0; i < x; i++){
+      if ($scope.list[i].done == false){
+        $scope.list2.push($scope.list[i]);
+      }    
+    } $scope.list = $scope.list2;
+  };
+
+  $scope.updating = function(index){
+    $scope.list.splice($scope.list[index],1);
+    $scope.Test = $scope.list[index].text; 
+
+    console.log($scope.list[index].text);
+  };
+
+  // Inserting UI Bootstrap for Tooltips
+
+  var TooltipDemoCtrl = function ($scope) {
+  $scope.done_tip = 'Completed?';
+  $scope.update_tip = 'Click to Update';
 };
+
+});

@@ -6,39 +6,38 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="todo.css"/>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script type="text/javascript" src="http://cdn.jsdelivr.net/angular.bootstrap/0.11.0/ui-bootstrap-tpls.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="todo.js"></script>
 </head>
 <body ng-controller="ToDoList_Controller">
-  <header class="container">
-    <div class="row">
+  <section class="container">
+    <div class="row header">
       <div class="col-xs-12">
-        <h1>To Do List</h1>
+        <h1>TO DO APP</h1>
       </div>
     </div>
-  </header>
-  <section class="container">
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <input type="text" ng-model="Test">
-        <button ng-click="push(Test)">Add</button>
-        <h3>{{Test}}</h3>
-          <div ng-repeat="item in list" class="row">
-            <div class="col-xs-2">
-              <input ng-model="item.done" type="checkbox">
-              </div>
-            <div ng-class="{done: item.done}" class="col-xs-10">{{item.text}}</div>
-          </div>
-          <button ng-click="remove()">Remove Completed Tasks</button>
+    <div class="row list_items" ng-repeat="item in list track by $index" >
+      <div class="col-xs-2">
+        <input type="checkbox" class="checkbox" ng-model="item.done" tooltip="Completed?"  tooltip-popup-delay='1000' tooltip-trigger="mouseenter" />
       </div>
-      <div class="col-md-3"></div>
+      <div class="col-xs-10 items">
+        <h2>{{item.text}}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-8 input">
+        <input type="text" placeholder="I need to..." ng-model="Text">
+      </div>
+      <div class="col-xs-4 add_button" ng-click="adding(Text)">
+        <h2>ADD BUTTON</h2>
+      </div>
+    </div>
+    <div class="row clear_button">
+      <div class="col-xs-12" ng-click="removing()">
+        <h1>CLEAR BUTTON</h1>
+      </div>
     </div>
   </section>
-  <footer class="container">
-    <div class="row">
-      <div class="col-xs-12"></div>
-    </div>
-  </footer>
 </body>
 </html>
