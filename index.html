@@ -3,11 +3,12 @@
 <head>
   <title>To Do List</title>
   <meta name="viewport" content"width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="todo.css"/>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
-  <script type="text/javascript" src="http://cdn.jsdelivr.net/angular.bootstrap/0.11.0/ui-bootstrap-tpls.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/angular.bootstrap/0.11.0/ui-bootstrap-tpls.js"></script>
+  <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.min.js"></script>
   <script src="todo.js"></script>
 </head>
 <body ng-controller="ToDoList_Controller">
@@ -19,7 +20,7 @@
     </div>
     <div class="row list_items" ng-repeat="item in list track by $index" >
       <div class="col-xs-1">
-        <input type="checkbox" class="checkbox" ng-model="item.done" tooltip="Completed?"  tooltip-popup-delay='1000' tooltip-trigger="mouseenter" />
+        <input type="checkbox" class="checkbox" ng-model="item.done" tooltip="Completed?"  tooltip-popup-delay='300' tooltip-trigger="mouseenter" />
       </div>
       <div class="col-xs-11 items">
         <h2 ng-class="{done: item.done}">{{item.text}}</h2>

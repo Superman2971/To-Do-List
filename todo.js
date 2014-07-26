@@ -1,12 +1,11 @@
-var ToDoList_App = angular.module("ToDoList", ["ui.bootstrap"]);
+var ToDoList_App = angular.module("ToDoList", ["ui.bootstrap", "firebase"]);
 
-ToDoList_App.controller("ToDoList_Controller", function($scope){
-  $scope.list = [
-    {done: false, text:"First"},
-    {done: false, text:"Second"},
-    {done: false, text:"Third"}
-    ];
+ToDoList_App.controller("ToDoList_Controller", function($scope, $firebase){
 
+  // THE LIST OF ITEMS --> some starter items here
+  $scope.list = [];
+
+  // ADD AN ITEM FUNCTION
   $scope.adding = function(key, value){
     if (key.keyCode == 13){
       if (value){
@@ -16,6 +15,7 @@ ToDoList_App.controller("ToDoList_Controller", function($scope){
     }
   };
 
+  // REMOVE COMPLETED ITEMS FUNCTION
   $scope.removing = function(){
     var x = $scope.list.length ;
     $scope.list2 = []
@@ -26,18 +26,18 @@ ToDoList_App.controller("ToDoList_Controller", function($scope){
     } $scope.list = $scope.list2;
   };
 
-  $scope.updating = function(index){
-    $scope.list.splice($scope.list[index],1);
-    $scope.Test = $scope.list[index].text; 
-
-    console.log($scope.list[index].text);
+  // CHANGE ARRAY TO OBJECT FOR FIREBASE
+  $scope.object_list = {
+    list_object: $scope.list
   };
 
-  // Inserting UI Bootstrap for Tooltips
+  // FIREBASE
+  var Fire_items = new Firebase("https://to-do-list-practice.firebaseio.com/" + "ToDo_items");
+  $scope.remote_list = $firebase(Fire_items);
 
-  var TooltipDemoCtrl = function ($scope) {
-  $scope.done_tip = 'Completed?';
-  $scope.update_tip = 'Click to Update';
-};
+  $scope.remote_list.$bind($scope, "object_list");
+  $scope.$watch("list", function(){
+    return false;
+  });
 
 });
