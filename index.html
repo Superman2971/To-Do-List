@@ -18,14 +18,19 @@
         <h1>TO DO APPLICATION</h1>
       </div>
     </div>
-    <div ng-model="object_list" class="row list_items" ng-repeat="item in list track by $index" >
-      <div class="col-xs-1">
-        <input type="checkbox" class="checkbox" ng-model="item.done" tooltip="Completed?"  tooltip-popup-delay='300' tooltip-trigger="mouseenter" />
-      </div>
-      <div class="col-xs-11 items">
-        <h2 ng-class="{done: item.done}">{{item.text}}</h2>
+
+    <div ng-model="list" ng-repeat="array in list track by $index" >
+      <div class="row list_items" ng-repeat="item in array track by $index">
+        <div class="col-xs-1">
+            <input type="checkbox" class="checkbox" ng-model="item.done" tooltip="Completed?"  tooltip-popup-delay='300' tooltip-trigger="mouseenter" />
+        </div>
+          <div class="col-xs-11 items">
+            <h2 ng-class="{done: item.done}">{{item.text}}</h2>
+          </div>
       </div>
     </div>
+
+
     <div class="row">
       <div class="col-xs-8 input_field">
         <input class="input" type="text" placeholder="I need to..." ng-model="Text" ng-keydown="adding($event, Text)">
@@ -34,6 +39,7 @@
         <h2 class="add_btn">ADD BUTTON</h2>
       </div>
     </div>
+
     <div class="row clear_button">
       <div class="col-xs-12" ng-click="removing()" tooltip-placement="bottom" tooltip="Beware this is PERMANENT"  tooltip-popup-delay='300' tooltip-trigger="mouseenter" >
         <h1>CLEAR COMPLETED</h1>
