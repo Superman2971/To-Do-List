@@ -18,7 +18,7 @@
         <h1>TO DO APPLICATION</h1>
       </div>
     </div>
-    <div class="row list_items" ng-repeat="item in list track by $index" >
+    <div ng-model="object_list" class="row list_items" ng-repeat="item in list track by $index" >
       <div class="col-xs-1">
         <input type="checkbox" class="checkbox" ng-model="item.done" tooltip="Completed?"  tooltip-popup-delay='300' tooltip-trigger="mouseenter" />
       </div>

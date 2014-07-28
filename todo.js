@@ -2,7 +2,7 @@ var ToDoList_App = angular.module("ToDoList", ["ui.bootstrap", "firebase"]);
 
 ToDoList_App.controller("ToDoList_Controller", function($scope, $firebase){
 
-  // THE LIST OF ITEMS --> some starter items here
+  // THE LIST OF ITEMS
   $scope.list = [];
 
   // ADD AN ITEM FUNCTION
@@ -17,12 +17,12 @@ ToDoList_App.controller("ToDoList_Controller", function($scope, $firebase){
 
   // REMOVE COMPLETED ITEMS FUNCTION
   $scope.removing = function(){
-    var x = $scope.list.length ;
+    var x = $scope.list.length;
     $scope.list2 = []
     for (var i = 0; i < x; i++){
       if ($scope.list[i].done == false){
         $scope.list2.push($scope.list[i]);
-      }    
+      }
     } $scope.list = $scope.list2;
   };
 
@@ -36,7 +36,7 @@ ToDoList_App.controller("ToDoList_Controller", function($scope, $firebase){
   $scope.remote_list = $firebase(Fire_items);
 
   $scope.remote_list.$bind($scope, "object_list");
-  $scope.$watch("list", function(){
+  $scope.$watch("object_list", function(){
     return false;
   });
 
