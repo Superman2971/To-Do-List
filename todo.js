@@ -1,11 +1,16 @@
 var ToDoList_App = angular.module("ToDoList", ["ui.bootstrap", "firebase"]);
 
-ToDoList_App.controller("ToDoList_Controller", function($scope, $firebase){
+ToDoList_App.controller("ToDoList_Controller", function($scope, $firebase, $http){
 
-  // THE LIST OF ITEMS
-  $scope.list = {
-    list:[]
-  };
+  // Accessing the object list of items on Firebase
+  $scope.list_url = "https://to-do-list-practice.firebaseio.com/ToDo_items.json";
+  $scope.myJson = "";
+  $http.get($scope.list_url).then(function(result) {
+    $scope.myJson = result.data;
+  });
+
+  // The List of items --> the object of items is pulled down from Firebase and stored locally
+  $scope.list = $scope.myJson;
 
   // ADD AN ITEM FUNCTION
   $scope.adding = function(key, value){
@@ -15,6 +20,7 @@ ToDoList_App.controller("ToDoList_Controller", function($scope, $firebase){
         $scope.Text = null;
       }
     }
+    console.log($scope.list);
   };
 
   // REMOVE COMPLETED ITEMS FUNCTION
@@ -29,8 +35,7 @@ ToDoList_App.controller("ToDoList_Controller", function($scope, $firebase){
   };
 
   // FIREBASE
-  var Fire_items = new Firebase("https://to-do-list-practice.firebaseio.com/" + "ToDo_items");
-  $scope.remote_list = $firebase(Fire_items);
+  $scope.remote_list = $firebase(new Firebase("https://to-do-list-practice.firebaseio.com/" + "ToDo_items"));
 
   $scope.remote_list.$bind($scope, "list");
   $scope.$watch("list", function(){
